@@ -1,0 +1,7 @@
+.active-link{
+    background-color: rgb(0, 0, 0) !important;
+    border-radius: 10px;
+    padding: 2px;
+    color: white;
+    transition: all 1s ease;
+}
