@@ -25,6 +25,12 @@ const Footer = () => {
         
         <div className="footer-section">
           <h4 className="footer-subtitle">تماس با ما</h4>
+          <div>
+            <div className="contact-info">
+              <a href="">درباره ما</a>
+              <p className='mt-6'>راه های ارتباطی</p>
+            </div>
+          </div>
           <div className="contact-info">
             <p>📧 info@lomisa.com</p>
             <p>📞 051-38945678</p>
@@ -34,7 +40,7 @@ const Footer = () => {
         
         <div className="footer-section">
           <h4 className="footer-subtitle">شبکه‌های اجتماعی</h4>
-          <div className="social-links">
+          <div className="social-links flex-col">
             <a href="#" className="social-link">اینستاگرام</a>
             <a href="#" className="social-link">تلگرام</a>
             <a href="#" className="social-link">واتساپ</a>

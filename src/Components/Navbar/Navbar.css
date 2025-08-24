@@ -5,3 +5,39 @@
     color: white;
     transition: all 1s ease;
 }
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hamburger-menu ul li {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 8px 0;
+}
+
+.hamburger-menu ul li:last-child {
+    border-bottom: none;
+}
+
+/* Smooth transition for menu items */
+.hamburger-menu ul li a {
+    display: block;
+    padding: 8px 0;
+    position: relative;
+}
+
+.hamburger-menu ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #22c55e; /* main-green */
+    transition: width 0.3s ease;
+}
+
+.hamburger-menu ul li a:hover::after {
+    width: 100%;
+}

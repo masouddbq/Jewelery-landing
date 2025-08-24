@@ -24,7 +24,7 @@ const ImageSlider = () => {
   const handlePrev = () => setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   
   return ( 
-  <div className="flex mb-60 justify-evenly items-center px-20 md:px-0 mt-10 bg-gradient-to-tl from-main-green to-gray-900">
+  <div className="flex mb-2 justify-evenly items-center px-20 md:px-0 mt-10 bg-gradient-to-tl from-main-green to-gray-900">
     <div className="relative flex-col justify-center items-center w-72 h-72">
         <div className="absolute top-36 left-0 transform translate-y-1/2">
             <button onClick={handlePrev} className="text-2xl">
