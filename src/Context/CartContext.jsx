@@ -15,21 +15,23 @@ export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const addToCart = (item) => {
+    const size = item.size || 'S';
+    const lineId = item.lineId || `${item.id}:${size}`;
     setCartItems(prevItems => {
-      const existingItem = prevItems.find(cartItem => cartItem.id === item.id);
+      const existingItem = prevItems.find(cartItem => (cartItem.lineId || cartItem.id) === lineId);
       if (existingItem) {
         return prevItems.map(cartItem =>
-          cartItem.id === item.id
+          (cartItem.lineId || cartItem.id) === lineId
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
       }
-      return [...prevItems, { ...item, quantity: 1 }];
+      return [...prevItems, { ...item, size, lineId, quantity: 1 }];
     });
   };
 
   const removeFromCart = (itemId) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== itemId));
+    setCartItems(prevItems => prevItems.filter(item => item.lineId !== itemId && item.id !== itemId));
   };
 
   const updateQuantity = (itemId, quantity) => {
@@ -39,7 +41,7 @@ export const CartProvider = ({ children }) => {
     }
     setCartItems(prevItems =>
       prevItems.map(item =>
-        item.id === itemId ? { ...item, quantity } : item
+        item.lineId === itemId || item.id === itemId ? { ...item, quantity } : item
       )
     );
   };
@@ -50,7 +52,9 @@ export const CartProvider = ({ children }) => {
 
   const getTotalPrice = () => {
     return cartItems.reduce((total, item) => {
-      const price = parseFloat(item.price.replace('$', ''));
+      const price = typeof item.price === 'number'
+        ? item.price
+        : parseFloat(String(item.price).replace(/[^0-9.]/g, '')) || 0;
       return total + (price * item.quantity);
     }, 0);
   };

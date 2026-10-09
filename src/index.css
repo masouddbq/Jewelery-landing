@@ -2,12 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "pinar";
-  src: url(./assets/fonts/Pinar-DS4-Regular.ttf);
+* {
+  box-sizing: border-box;
 }
 
-body{
-  font-family: "pinar";
-  text-align: center;
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: #070707;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: start;
+  color: #131313;
+}
+
+button,
+input,
+select {
+  font: inherit;
 }
